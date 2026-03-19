@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Win11Optimizer.Converters"
         mc:Ignorable="d"
-        Title="Win11Optimizer - Windows 11 軽量化・プライバシー設定"
+        Title="Win11Optimizer Ver2026.03"
         Height="820" Width="1000" MinHeight="600" MinWidth="800"
         WindowStartupLocation="CenterScreen"
         Background="#FF1A1A2E"
@@ -433,7 +433,7 @@
                 <TextBlock x:Name="StatusText" Text="準備完了"
                            FontSize="11" Foreground="{StaticResource TextSecondary}"
                            VerticalAlignment="Center"/>
-                <TextBlock Grid.Column="1" x:Name="VersionText" Text="v1.0.0"
+                <TextBlock Grid.Column="1" x:Name="VersionText" Text="Version 2026.03"
                            FontSize="10" Foreground="{StaticResource TextSecondary}"
                            VerticalAlignment="Center"/>
             </Grid>
