@@ -1,14 +1,23 @@
 # Win11Optimizer
 
 Windows 11 軽量化・プライバシー最適化ツール  
-**バージョン 2.0** — .NET 10 + C# 13 + WPF
+**バージョン 2026.03** — .NET 10 + C# 13 + WPF
+
+## 生成AI使用表明
+
+このツールは、以下の生成AIツールを使用して作成されたものです。
+- **Claude Sonnet 4.6** via Perplexity Computer(Visual Studio プロジェクト作成)
+- **GPT-5 mini** via GitHub Copilot（内部コード修正）
+- **NVIDIA Nemotron 3 Super** etc... via Perplexity （コード修正・自己完結オプション設定）
+
+## ダウンロード
 
 ## 動作要件
 
 | 項目 | 要件 |
 |------|------|
 | OS | Windows 11 (22H2 以降) |
-| ランタイム | **.NET 10 Desktop Runtime** (x64) |
+| ランタイム | **.NET 10 Desktop Runtime** (x64) ※バイナリ版の場合はインストール不要 |
 | 権限 | **管理者権限必須** |
 | IDE | Visual Studio 2022 / 2026 Community |
 
@@ -26,16 +35,7 @@ dotnet build -c Release
 
 または Visual Studio で `Win11Optimizer.sln` を開いてビルド。
 
-## .NET 10 モダナイズで変更した点
 
-- `TargetFramework` を `net481` → `net10.0-windows` に変更
-- `LangVersion` を `13` に設定、`ImplicitUsings` 有効化
-- `Compatibility/IsExternalInit.cs` shim を削除（.NET 10 では不要）
-- 全 `.cs` ファイルを **file-scoped namespace** に変換
-- コレクション初期化を `new()` → `[]`（コレクション式）に統一
-- `List.Find()` / `OrderDescending()` など .NET 6+ API を活用
-- `File.WriteAllTextAsync` で非同期 I/O を利用
-- `process.WaitForExit()` のタプル分解をより簡潔に記述
 
 ## 主要機能
 
