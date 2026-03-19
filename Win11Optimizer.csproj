@@ -1,0 +1,47 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <!-- .NET 10 Desktop Runtime (Windows 11 付属 / winget でインストール可能) -->
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <RootNamespace>Win11Optimizer</RootNamespace>
+    <AssemblyName>Win11Optimizer</AssemblyName>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <!-- Nullable reference types を有効化 -->
+    <Nullable>enable</Nullable>
+    <!-- C# 13 -->
+    <LangVersion>13</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Configurations>Debug;Release</Configurations>
+    <Platforms>AnyCPU;x64</Platforms>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
+    <FileVersion>2.0.0.0</FileVersion>
+    <Product>Win11Optimizer</Product>
+    <Company>Win11Optimizer</Company>
+    <Description>Windows 11 軽量化・プライバシー最適化ツール (.NET 10)</Description>
+	<InvariantGlobalization>false</InvariantGlobalization>
+	<SatelliteResourceLanguages>ja</SatelliteResourceLanguages>
+    <!-- 単一ファイル発行 に対応 -->
+    <PublishSingleFile>true</PublishSingleFile>
+    <SelfContained>true</SelfContained>
+	<EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
+	<PublishReadyToRun>false</PublishReadyToRun>
+	<IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+	  <PublishSingleFileBundle>true</PublishSingleFileBundle>
+	  <SelfContained>true</SelfContained>
+	  <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <!-- AOT 対応の準備（将来向け）-->
+    <EnableTrimAnalyzer>false</EnableTrimAnalyzer>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+  </ItemGroup>
+
+  <!-- regファイルをビルド出力に含めるが、EmbeddedResourceとして隠す -->
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\reg\*.reg" />
+  </ItemGroup>
+
+</Project>

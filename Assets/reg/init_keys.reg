@@ -1,0 +1,22 @@
+Windows Registry Editor Version 5.00
+
+; Win11Optimizer 初期化用レジストリファイル
+; 起動時にキーが存在しない場合に自動実行されます
+
+; 広告識別子
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo]
+
+; コンテンツデリバリマネージャ
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+
+; 検索設定
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Search]
+
+; 検索設定 (SearchSettings)
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\SearchSettings]
+
+; エクスプローラー詳細設定
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+
+; プライバシー設定
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Privacy]
