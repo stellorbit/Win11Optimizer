@@ -1,0 +1,111 @@
+<Window x:Class="Win11Optimizer.Views.AboutDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:nav="clr-namespace:System.Windows.Navigation;assembly=PresentationFramework"
+        Title="バージョン情報" Height="430" Width="560"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize"
+        Background="#FF1A1A2E"
+        Foreground="White">
+    <Grid Margin="24">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel>
+            <TextBlock Text="Win11Optimizer"
+                       FontSize="26"
+                       FontWeight="Bold"
+                       Foreground="White"/>
+            <TextBlock Text="Version 2024.04"
+                       FontSize="13"
+                       Margin="0,4,0,0"
+                       Foreground="#FFAAAACC"/>
+        </StackPanel>
+
+        <Border Grid.Row="1"
+                Margin="0,18,0,0"
+                Padding="16"
+                CornerRadius="10"
+                Background="#FF0F3460"
+                BorderBrush="#FF2A2A4A"
+                BorderThickness="1">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel>
+                    <TextBlock Text="アプリ情報"
+                               FontSize="14"
+                               FontWeight="SemiBold"
+                               Foreground="White"/>
+                    <TextBlock
+                        Margin="0,10,0,0"
+                        FontSize="12"
+                        TextWrapping="Wrap"
+                        Foreground="#FFF2F4FF"
+                        Text="Windows 11 向けの最適化設定を、分かりやすく適用・復元するためのユーティリティです。"/>
+                    <TextBlock
+                        Margin="0,12,0,0"
+                        FontSize="12"
+                        TextWrapping="Wrap"
+                        Foreground="#FFF2F4FF"
+                        Text="このアプリは生成AI(Claude Sonnet/Codex GPT-5.4)を活用して作成されています。"/>
+                    <TextBlock
+                        Margin="0,12,0,0"
+                        FontSize="12"
+                        TextWrapping="Wrap"
+                        Foreground="#FFF2F4FF"
+                        Text="本ソフトウェアは MIT ライセンスに基づいて提供されています。利用・改変・再配布にあたっては、ライセンス条件に従ってください。"/>
+                    <TextBlock
+                        Margin="0,12,0,0"
+                        FontSize="12"
+                        TextWrapping="Wrap"
+                        Foreground="#FFF2F4FF"
+                        Text="Copyright (c) Stellorbit"/>
+                    <TextBlock
+                        Margin="0,12,0,0"
+                        FontSize="12"
+                        TextWrapping="Wrap"
+                        Foreground="#FFF2F4FF">
+                        <Run Text="公開者: "/>
+                        <Run Text="Stellorbit"/>
+                    </TextBlock>
+                    <TextBlock Margin="0,12,0,0"
+                               FontSize="12"
+                               TextWrapping="Wrap"
+                               Foreground="#FFF2F4FF">
+                        <Run Text="Website: "/>
+                        <Hyperlink NavigateUri="https://www.stellorbit.net"
+                                   RequestNavigate="Hyperlink_RequestNavigate">
+                            <Run Text="https://www.stellorbit.net"/>
+                        </Hyperlink>
+                    </TextBlock>
+                    <TextBlock Margin="0,8,0,0"
+                               FontSize="12"
+                               TextWrapping="Wrap"
+                               Foreground="#FFF2F4FF">
+                        <Run Text="GitHub: "/>
+                        <Hyperlink NavigateUri="https://github.com/stellorbit/Win11Optimizer"
+                                   RequestNavigate="Hyperlink_RequestNavigate">
+                            <Run Text="https://github.com/stellorbit/Win11Optimizer"/>
+                        </Hyperlink>
+                    </TextBlock>
+                </StackPanel>
+            </ScrollViewer>
+        </Border>
+
+        <StackPanel Grid.Row="2"
+                    Margin="0,18,0,0"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right">
+            <Button Content="閉じる"
+                    Width="90"
+                    Height="34"
+                    Background="#FFE94560"
+                    Foreground="White"
+                    BorderThickness="0"
+                    Cursor="Hand"
+                    Click="BtnClose_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

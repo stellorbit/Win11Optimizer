@@ -1,0 +1,88 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <!-- .NET 10 Desktop Runtime (Windows 11 付属 / winget でインストール可能) -->
+    <TargetFramework>net10.0-windows10.0.26100.0</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <RootNamespace>Win11Optimizer</RootNamespace>
+    <AssemblyName>Win11Optimizer</AssemblyName>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <!-- Nullable reference types を有効化 -->
+    <Nullable>enable</Nullable>
+    <!-- C# 13 -->
+    <LangVersion>13</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Configurations>Debug;Release</Configurations>
+    <Platforms>AnyCPU;x64</Platforms>
+    <AssemblyVersion>2026.04</AssemblyVersion>
+    <FileVersion>2026.04</FileVersion>
+    <Product>Win11Optimizer</Product>
+    <Company>Win11Optimizer</Company>
+    <Description>Windows 11 軽量化・プライバシー最適化ツール (.NET 10)</Description>
+	<InvariantGlobalization>false</InvariantGlobalization>
+	<SatelliteResourceLanguages>ja</SatelliteResourceLanguages>
+    <!-- 単一ファイル発行 -->
+    <PublishSingleFile>true</PublishSingleFile>
+    <SelfContained>true</SelfContained>
+    <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
+    <PublishReadyToRun>false</PublishReadyToRun>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <RepositoryUrl>https://github.com/stellorbit/Win11Optimizer</RepositoryUrl>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PublishArchiveFile Condition="'$(PublishDir)' != ''">$([System.IO.Path]::GetFullPath('$(PublishDir)..\Win11Optimizer_$(FileVersion).zip'))</PublishArchiveFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+    <PackageReference Include="System.Management" Version="9.0.0" />
+  </ItemGroup>
+
+  <!-- regファイルをビルド出力に含めるが、EmbeddedResourceとして隠す -->
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\reg\*.reg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+  <Target Name="CreatePublishZip"
+          AfterTargets="Publish"
+          Condition="'$(PublishDir)' != '' and '$(PublishArchiveFile)' != '' and Exists('$(PublishDir)')">
+    <Message Text="Creating ZIP package: $(PublishArchiveFile)" Importance="high" />
+    <Delete Files="$(PublishArchiveFile)" Condition="Exists('$(PublishArchiveFile)')" />
+    <ZipDirectory SourceDirectory="$(PublishDir)"
+                  DestinationFile="$(PublishArchiveFile)"
+                  Overwrite="true" />
+  </Target>
+
+</Project>
